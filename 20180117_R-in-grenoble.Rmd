@@ -1,0 +1,199 @@
+---
+title: "RStudio and Git"
+subtitle: "First meeting"
+author: "Florian Privé & Magali Richard"
+date: "January 18, 2018"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, width = 65)
+knitr::opts_chunk$set(echo = FALSE, fig.align='center', dev='png', dpi = 95)
+```
+
+class: inverse, center, middle
+
+# Introduction
+## RStudio
+## Integration of Git
+
+---
+
+class: inverse, center, middle
+
+# Introduction to Git
+
+---
+
+## What is Git
+
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+- A versionning system (Git)
+
+- A collaborative system (publish and share your code on a platform)
+
+[Git website](https://git-scm.com/)
+
+[Install git](https://git-scm.com/downloads)
+
+[Git introducing video](https://git-scm.com/video/what-is-version-control)
+
+[RStudio and Git](http://r-pkgs.had.co.nz/git.html)
+
+---
+
+## What is Git
+
+![dataflow](gitdataflow.png)
+
+---
+
+
+## What is Git
+
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+- => 3 main commands: commit, push, and pull
+
+  - pull: update your local project with the latest version of the main project
+
+  - commit: add your latest contribution/modification
+
+  - push: merge your modifications with the main project
+  
+Simple commands are available in RStudio, otherwise you need to use Git from the shell ([Git cheat sheet](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf))
+
+---
+
+## Git platforms (share your code, collaborate)
+
+- [GitHub](https://github.com/magrichard), [documentation](https://guides.github.com/activities/hello-world/)
+
+- [GitLab UGA](https://gricad-gitlab.univ-grenoble-alpes.fr/), [documentation](https://docs.gricad-pages.univ-grenoble-alpes.fr/help/)
+
+- other...?
+
+---
+
+class: inverse, center, middle
+
+# How to use Git (integration with RStudio)  
+
+**TUTO**
+
+---
+
+## Create a local Git repository
+
+1 - RStudio > New Project > New directory > R packages + create a git repository
+
+2 - Go to the git menu, on the top-right, and add your files of interest: 
+
+- (i) save your changes, 
+
+- (ii) open the commit window, 
+
+- (iii) select files, 
+
+- (iv) stage files, 
+
+- (v) write a commit message, 
+
+- (vi) commit
+
+---
+
+## Create a local Git repository 
+
+1 - RStudio > New Project > New directory > R packages + create a git repository
+
+2 - Go to the git menu, on the top-right, and add your files of interest: 
+
+3 - Synchronising with GitHub. Go to RStudio > Tools > Shell
+
+- create a new repo on [GitHub](https://github.com/new) and give it the same name as your package
+
+- push your local respository from the command line
+
+`git remote add origin https://github.com/magrichard/testgit.git`
+
+`git push -u origin master`
+
+4 - Check that your GitHub repository is updated [GitHub repo](https://github.com/magrichard/testgit)
+
+---
+
+## Publishing your code on GitHub (or Gitlab...)
+
+
+1 - Change something (modify the hello.R file and create a new R file)
+
+2 - Go to the git menu, on the top-right, and add your files of interest: 
+
+- (i) save your changes, 
+
+- (ii) open the commit window, 
+
+- (iii) select files, 
+
+- (iv) stage files, 
+
+- (v) write a commit message, 
+
+- (vi) commit
+
+- **(vii) push**
+
+3 - Check that your GitHub repository is updated [GitHub repo](https://github.com/magrichard/testgit)
+
+---
+
+## Import a GitHub repository into RStudio
+
+1 - On GitHub: [create new repo](https://github.com/new) with a README and a description. Leave all the other options as is, then click Submit. (no license, no gitignore...)
+
+2- **CLONE** your repository. **Copy** the web URL
+
+
+3- In RStudio: Create a New Project > Version Control > Git and **paste** the web URL of the project. Congratulation, you have cloned your new repo.
+
+- => You now have access to Git functionalities within Rstudio
+
+---
+
+## Collaborative work on GitHub
+
+Option 1 - Equal collaborators: Everyone can pull, commit and push on the same 'master' branch
+
+Option 2 - One coordinator (master branch, owns the project) and one (or more) contributor:
+
+![workflow](workflow.png)
+---
+
+## Collaborative work on GitHub
+
+Option 1 - Equal collaborators: Everyone can pull, commit and push on the same 'master' branch
+
+Option 2 - One coordinator (master branch, owns the project) and one (or more) contributor:
+
+- Fork the original repo
+
+- Clone it, and link it to the master repo 
+
+`git remote add upstream https://github.com/magrichard/testgit.git`
+
+- Uptade your fork with latest changes form the master repo (fetch and merge) 
+
+`git pull upstream master`
+
+- Commit, push on your fork, and create a [Pull Request](https://help.github.com/articles/creating-a-pull-request/) (that will be reviewed and accepted by the master)
+
+
